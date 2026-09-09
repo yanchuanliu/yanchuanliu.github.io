@@ -1,0 +1,254 @@
+/* ==========================================================================
+   Yanchuan Liu — academic site
+   Light academic theme. Edit colors in the :root block below.
+   ========================================================================== */
+
+:root {
+  --bg:        #faf8f4;   /* page background (warm cream) */
+  --panel:     #f2eee6;   /* sidebar background */
+  --ink:       #1c1a17;   /* body text */
+  --ink-soft:  #55504a;   /* secondary text */
+  --ink-faint: #8b8479;   /* labels, meta */
+  --accent:    #7d4b2b;   /* links, section numbers (muted brick) */
+  --accent-dk: #5a3319;
+  --rule:      #ddd5c8;   /* hairlines */
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono:  ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(125, 75, 43, .35); }
+a:hover { color: var(--accent-dk); border-bottom-color: var(--accent-dk); }
+
+/* ---------- layout ---------- */
+
+.wrap {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 0;
+  max-width: 1180px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+/* ---------- sidebar ---------- */
+
+.sidebar {
+  background: var(--panel);
+  border-right: 1px solid var(--rule);
+  padding: 3rem 2rem 2.5rem;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar .name {
+  font-family: var(--serif);
+  font-size: 2rem;
+  line-height: 1.12;
+  font-weight: 400;
+  margin: 0 0 .9rem;
+  letter-spacing: -.01em;
+}
+.sidebar .name a { color: var(--ink); border: 0; }
+.sidebar .name a:hover { color: var(--accent); }
+
+.tagline {
+  font-family: var(--mono);
+  font-size: .72rem;
+  line-height: 1.75;
+  color: var(--ink-faint);
+  letter-spacing: .02em;
+  margin: 0 0 2rem;
+}
+
+.nav { list-style: none; margin: 0 0 2.25rem; padding: 0; }
+.nav li { margin: 0 0 .1rem; }
+.nav a {
+  display: flex;
+  align-items: baseline;
+  gap: .6rem;
+  padding: .42rem .6rem;
+  border: 0;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: .8rem;
+  letter-spacing: .06em;
+  text-transform: lowercase;
+  color: var(--ink-soft);
+}
+.nav a .n { font-size: .64rem; color: var(--ink-faint); }
+.nav a:hover { background: rgba(125, 75, 43, .07); color: var(--accent); }
+.nav a.active { background: #fff; color: var(--ink); box-shadow: inset 2px 0 0 var(--accent); }
+.nav a.active .n { color: var(--accent); }
+
+.meta { font-family: var(--mono); font-size: .74rem; line-height: 2; color: var(--ink-soft); }
+.meta a { border: 0; color: var(--ink-soft); }
+.meta a:hover { color: var(--accent); }
+.meta .block { margin-bottom: 1.5rem; }
+.meta .label {
+  display: block;
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: .3rem;
+}
+.copyright { font-family: var(--mono); font-size: .66rem; color: var(--ink-faint); margin-top: 2rem; }
+
+/* ---------- main ---------- */
+
+main { padding: 3.25rem 3.5rem 5rem; max-width: 46rem; }
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 1.5rem;
+}
+.eyebrow::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+
+h1 {
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  line-height: 1.1;
+  font-weight: 400;
+  margin: 0 0 .5rem;
+  letter-spacing: -.015em;
+}
+.lede { font-size: 1.1rem; color: var(--ink-soft); margin: 0 0 2.5rem; font-style: italic; }
+
+h2 {
+  font-family: var(--serif);
+  font-size: 1.42rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin: 0 0 .35rem;
+}
+
+h3 {
+  font-family: var(--mono);
+  font-size: .68rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  font-weight: 500;
+  margin: 3rem 0 1.25rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+p { margin: 0 0 1.15rem; }
+
+/* intro block with headshot */
+.intro { display: grid; grid-template-columns: minmax(0,1fr) 168px; gap: 2.25rem; align-items: start; }
+.headshot { width: 100%; border-radius: 2px; display: block; border: 1px solid var(--rule); }
+.headshot-cap { font-family: var(--mono); font-size: .62rem; color: var(--ink-faint); margin-top: .5rem; letter-spacing: .04em; }
+.headshot-slot {
+  width: 100%; aspect-ratio: 4 / 5;
+  border: 1px dashed var(--rule); border-radius: 2px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: .6rem; color: var(--ink-faint);
+  text-align: center; padding: .75rem; line-height: 1.5;
+}
+
+/* entries: papers, courses, positions */
+.entry { margin: 0 0 2.1rem; padding-left: 1rem; border-left: 2px solid var(--rule); }
+.entry:hover { border-left-color: var(--accent); }
+.entry .kicker {
+  font-family: var(--mono); font-size: .63rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--accent); margin: 0 0 .35rem;
+}
+.entry .byline { font-family: var(--sans); font-size: .84rem; color: var(--ink-faint); margin: 0 0 .6rem; }
+.entry p:last-child { margin-bottom: 0; }
+.entry .abstract { font-size: .95rem; color: var(--ink-soft); }
+
+/* citation list */
+.cite { margin: 0 0 1.4rem; padding-left: 1.6rem; text-indent: -1.6rem; font-size: .97rem; }
+
+/* two-column fact rows (timeline / education) */
+.rows { margin: 0 0 1rem; }
+.row {
+  display: grid; grid-template-columns: minmax(0,1fr) auto;
+  gap: 1.25rem; align-items: baseline;
+  padding: .7rem 0; border-bottom: 1px solid var(--rule);
+}
+.row:last-child { border-bottom: 0; }
+.row .what { font-size: .98rem; }
+.row .what .sub { display: block; font-family: var(--sans); font-size: .82rem; color: var(--ink-faint); }
+.row .when { font-family: var(--mono); font-size: .72rem; color: var(--ink-faint); white-space: nowrap; }
+
+/* pull quotes (teaching evals) */
+.quote {
+  margin: 0 0 1.5rem; padding: 1.1rem 1.35rem;
+  background: var(--panel); border-left: 2px solid var(--accent);
+  font-size: .97rem; font-style: italic; color: var(--ink-soft);
+}
+.quote p:last-child { margin-bottom: 0; }
+.quote .src { display: block; font-family: var(--mono); font-style: normal; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-faint); margin-top: .7rem; }
+
+/* tag pills */
+.tags { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0 0 1.5rem; padding: 0; list-style: none; }
+.tags li {
+  font-family: var(--mono); font-size: .68rem; letter-spacing: .04em;
+  padding: .28rem .6rem; border: 1px solid var(--rule); border-radius: 100px; color: var(--ink-soft);
+}
+
+/* download button */
+.btn {
+  display: inline-block; border: 1px solid var(--accent); border-radius: 2px;
+  padding: .6rem 1.15rem; font-family: var(--mono); font-size: .74rem;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--accent); background: transparent;
+}
+.btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+.note { font-size: .88rem; color: var(--ink-faint); font-style: italic; }
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 860px) {
+  body { font-size: 17px; }
+  .wrap { grid-template-columns: 1fr; }
+  .sidebar {
+    position: static; height: auto; border-right: 0;
+    border-bottom: 1px solid var(--rule); padding: 2.25rem 1.5rem 1.75rem;
+  }
+  .sidebar .name { font-size: 1.7rem; }
+  .nav { display: flex; flex-wrap: wrap; gap: .25rem; margin-bottom: 1.75rem; }
+  .nav a { padding: .35rem .55rem; }
+  .meta .block { margin-bottom: 1rem; }
+  .copyright { margin-top: 1rem; }
+  main { padding: 2.25rem 1.5rem 3.5rem; }
+  h1 { font-size: 2rem; }
+  .intro { grid-template-columns: 1fr; gap: 1.5rem; }
+  .headshot, .headshot-slot { max-width: 200px; }
+  .row { grid-template-columns: 1fr; gap: .15rem; }
+}
+
+@media print {
+  .sidebar { position: static; height: auto; }
+  .wrap { display: block; }
+  main { max-width: none; padding: 0; }
+}
